@@ -1,7 +1,9 @@
 {
   "name": "course-registration-project",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "author": "jongyunnn <jongyunj@icloud.com>",
+  "homepage": "https://github.com/jongyunnn/course-registration-project",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

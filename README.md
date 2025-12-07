@@ -1,6 +1,6 @@
 # 수강신청 시스템
 
-Next.js 16, TypeScript로 구축된 수강신청 시스템입니다.
+Next.js 16, TypeScript로 구축된 수강신청 시스템입니다. (https://github.com/jongyunnn/course-registration-project)
 
 ## 주요 기능
 
