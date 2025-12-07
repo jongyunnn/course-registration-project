@@ -115,13 +115,30 @@ src/
    npm install
    ```
 
-2. **개발 서버 실행:**
+2. **환경 변수 설정:**
+
+   `.env.example` 파일을 `.env.local`로 복사하고 `NEXTAUTH_SECRET` 값을 설정합니다:
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+   그 다음 `.env.local` 파일을 열어 `NEXTAUTH_SECRET` 값을 설정합니다:
+
+   ```bash
+   # 비밀 키 생성 (macOS/Linux)
+   openssl rand -base64 32
+   ```
+
+   생성된 키를 `.env.local` 파일의 `NEXTAUTH_SECRET` 값으로 설정합니다.
+
+3. **개발 서버 실행:**
 
    ```bash
    npm run dev
    ```
 
-3. **브라우저에서 열기:**
+4. **브라우저에서 열기:**
    [http://localhost:3000](http://localhost:3000) 접속
 
 ## 테스트
