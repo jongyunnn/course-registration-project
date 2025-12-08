@@ -41,7 +41,7 @@ export function CreateCourseForm() {
         router.push("/courses");
       },
       onError: (error) => {
-        console.error("Course creation failed:", error);
+        console.warn("Course creation failed:", error);
         toast.error("강의 등록 실패", {
           description: "잠시 후 다시 시도해주세요.",
         });

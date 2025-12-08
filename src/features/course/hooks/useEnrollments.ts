@@ -10,7 +10,7 @@ interface EnrollmentsResponse {
 
 export function useEnrollments() {
   const { isAuthenticated, user } = useAuth();
-  console.log(user);
+
   return useQuery<ApiResponse<EnrollmentsResponse>>({
     queryKey: ["enrollments"],
     queryFn: () => apiClient.get("/enrollments"),
