@@ -31,13 +31,31 @@ export function formatPhoneNumber(value: string): string {
 }
 
 export const formatNumberWithCommas = (value: number | string): string => {
-  const num =
-    typeof value === "string" ? parseInt(value.replace(/,/g, ""), 10) : value;
-  if (isNaN(num)) return "";
+  let num: number;
+
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    if (trimmed === "") return "";
+
+    const sanitized = trimmed.replace(/,/g, "");
+    // Only allow sign, digits, and optional decimal point
+    if (!/^[-+]?\d*(\.\d+)?$/.test(sanitized)) return "";
+
+    const parsed = Number(sanitized);
+    if (Number.isNaN(parsed)) return "";
+    num = Math.round(parsed);
+  } else {
+    num = Math.round(value);
+  }
+
   return num.toLocaleString("ko-KR");
 };
 
 export const parseFormattedNumber = (value: string): number => {
-  const parsed = parseInt(value.replace(/,/g, ""), 10);
-  return isNaN(parsed) ? 0 : parsed;
+  const match = value.match(/[-+]?\d[\d,]*(?:\.\d+)?/);
+  if (!match) return 0;
+
+  const numericString = match[0].replace(/,/g, "");
+  const parsed = parseFloat(numericString);
+  return isNaN(parsed) ? 0 : Math.trunc(parsed);
 };
