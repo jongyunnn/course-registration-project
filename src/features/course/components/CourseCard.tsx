@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Course } from "@/types";
 import { Badge } from "@/components/ui/badge";
-import { formatCurrency, cn } from "@/lib/utils";
+import { formatCurrency, cn, formatNumberWithCommas } from "@/lib/utils";
 import { getThumbnailUrl } from "../lib/thumbnail";
 import { ENROLLMENT_RATE } from "../constants";
 
@@ -69,7 +69,8 @@ export function CourseCard({
         </p>
         <div className="flex items-center gap-1 text-xs text-muted-foreground">
           <span>
-            {course.currentStudents}/{course.maxStudents}명
+            {formatNumberWithCommas(course.currentStudents)}/
+            {formatNumberWithCommas(course.maxStudents)}명
           </span>
           <Badge variant="secondary" className="py-0">
             신청률 {enrollmentPercent}%
