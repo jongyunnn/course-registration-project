@@ -1,14 +1,12 @@
 "use client";
 
-import { useSession, signOut, getSession } from "next-auth/react";
-import { useQueryClient } from "@tanstack/react-query";
+import { useSession, signOut } from "next-auth/react";
 import { useCallback } from "react";
 import { toast } from "sonner";
 import { AUTH_MESSAGES } from "../constants";
 
 export function useAuth() {
   const { data: session, status } = useSession();
-  const queryClient = useQueryClient();
 
   const user = session?.user ?? null;
   const isLoading = status === "loading";

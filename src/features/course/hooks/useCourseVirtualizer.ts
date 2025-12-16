@@ -34,19 +34,20 @@ export function useCourseVirtualizer({
 
   const virtualItems = virtualizer.getVirtualItems();
   const lastItem = virtualItems[virtualItems.length - 1];
+  const lastItemIndex = lastItem?.index;
 
   useEffect(() => {
-    if (!lastItem) {
+    if (lastItemIndex === undefined) {
       return;
     }
 
-    const isNearEnd = lastItem.index >= rowCount - 1;
+    const isNearEnd = lastItemIndex >= rowCount - 1;
     const shouldFetchMore = isNearEnd && hasNextPage && !isFetchingNextPage;
 
     if (shouldFetchMore) {
       fetchNextPage();
     }
-  }, [lastItem, rowCount, hasNextPage, isFetchingNextPage, fetchNextPage]);
+  }, [lastItemIndex, rowCount, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   const getRowItems = <T,>(items: T[], rowIndex: number) => {
     const leftItem = items[rowIndex * COLUMNS_PER_ROW];
